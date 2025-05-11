@@ -44,7 +44,7 @@ const Navbar = () => {
     >
       <nav className="hidden justify-between md:flex">
         <div className="flex items-center gap-6">
-          <div className="text-2xl font-bold text-green-500">Jay Bank</div>
+          <div className="text-2xl font-bold">Jay Bank</div>
           <div className="flex items-center">
             {navbarLinks.map(({ id, name }, index) => (
               <Button
