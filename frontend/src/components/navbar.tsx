@@ -38,7 +38,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`h-14 lg:h-16 p-4 lg:px-6 sticky top-0 z-20 ${
+      className={`h-14 lg:h-16 p-4 lg:px-6 sticky top-0 z-10 ${
         isBlurred ? "bg-background/50 backdrop-blur-lg" : "bg-background"
       }`}
     >
@@ -92,7 +92,7 @@ const Navbar = () => {
                   </div>
                 </SheetTitle>
               </SheetHeader>
-              <div className="mb-8 mt-8 flex flex-col gap-4">
+              <div className="mb-8 mt-8 px-4 flex flex-col gap-4">
                 {navbarLinks.map(({ id, name }, index) => (
                   <button
                     key={index}
@@ -104,7 +104,7 @@ const Navbar = () => {
                   </button>
                 ))}
               </div>
-              <div className="mt-2 flex flex-col gap-3">
+              <div className="mt-2 px-4 flex flex-col gap-3">
                 {authButtons.map(({ variant, href, name }, index) => (
                   <Link
                     key={index}

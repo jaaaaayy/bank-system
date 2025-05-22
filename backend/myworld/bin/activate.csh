@@ -13,13 +13,13 @@ setenv VIRTUAL_ENV '/home/jay/Documents/Personal Projects/bank-system/backend/my
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/"bin":$PATH"
+setenv VIRTUAL_ENV_PROMPT myworld
 
 
 set _OLD_VIRTUAL_PROMPT="$prompt"
 
 if (! "$?VIRTUAL_ENV_DISABLE_PROMPT") then
-    set prompt = '(myworld) '"$prompt"
-    setenv VIRTUAL_ENV_PROMPT '(myworld) '
+    set prompt = "("myworld") $prompt:q"
 endif
 
 alias pydoc python -m pydoc

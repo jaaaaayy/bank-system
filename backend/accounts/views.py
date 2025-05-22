@@ -9,8 +9,11 @@ from .models import Account
 from users.serializers import UserSerializer
 from card_linked_accounts.serializers import CardLinkedAccountSerializer
 from cards.models import Card
+from rest_framework.permissions import AllowAny
+from rest_framework.decorators import api_view, permission_classes
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def open_account(request):
   try:
     with transaction.atomic():

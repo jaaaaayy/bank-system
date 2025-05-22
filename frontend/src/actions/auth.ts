@@ -1,8 +1,63 @@
 "use server";
 
 import { baseUrl } from "@/lib/constants";
-import { loginFormSchema, LoginFormState } from "@/lib/definitions";
+import {
+  loginFormSchema,
+  LoginFormState,
+  registerFormSchema,
+  RegisterFormState,
+} from "@/lib/definitions";
 import { cookies } from "next/headers";
+
+export const register = async (
+  state: RegisterFormState,
+  formData: FormData
+) => {
+  const validatedFields = registerFormSchema.safeParse({
+    username: formData.get("username"),
+    password: formData.get("password"),
+    email: formData.get("email"),
+    first_name: formData.get("first_name"),
+    middle_name: formData.get("middle_name"),
+    last_name: formData.get("last_name"),
+    date_of_birth: formData.get("date_of_birth"),
+    address_line_1: formData.get("address_line_1"),
+    address_line_2: formData.get("address_line_2"),
+    city: formData.get("city"),
+    province: formData.get("province"),
+    postal_code: formData.get("postal_code"),
+    phone_number: formData.get("phone_number"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+    };
+  }
+
+  const response = await fetch(`${baseUrl}auth/register/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(validatedFields.data),
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    return {
+      message: error.detail || "Failed to register.",
+      success: false,
+    };
+  }
+
+  const data = await response.json();
+
+  return {
+    message: data.message,
+    success: true,
+  };
+};
 
 export const login = async (state: LoginFormState, formData: FormData) => {
   const validatedFields = loginFormSchema.safeParse({
@@ -87,6 +142,11 @@ export const logout = async () => {
   }
 
   const data = await response.json();
+
+  cookieStore.delete("access");
+  cookieStore.delete("refresh");
+  cookieStore.delete("customer_id");
+  cookieStore.delete("account_id");
 
   return data;
 };

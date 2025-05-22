@@ -42,8 +42,6 @@ export const createTransaction = async (
     note: formData.get("note"),
   });
 
-  console.log(validatedFields.data);
-
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,

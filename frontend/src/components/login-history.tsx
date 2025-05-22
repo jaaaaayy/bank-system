@@ -11,13 +11,9 @@ const LoginHistory = () => {
       <SidebarMenuItem>
         <p className="text-muted-foreground">
           Last login was: <br />
-          {lastLogin ? (
+          {lastLogin && (
             <span className="font-medium text-foreground">
               {new Date(lastLogin).toLocaleString()}
-            </span>
-          ) : (
-            <span className="font-medium text-foreground">
-              Loading last login...
             </span>
           )}
         </p>
@@ -25,13 +21,9 @@ const LoginHistory = () => {
       <SidebarMenuItem>
         <p className="text-muted-foreground">
           Last failed login was: <br />
-          {lastFailedLogin ? (
+          {lastFailedLogin && (
             <span className="font-medium text-foreground">
               {new Date(lastFailedLogin).toLocaleString()}
-            </span>
-          ) : (
-            <span className="font-medium text-foreground">
-              Loading last failed login...
             </span>
           )}
         </p>

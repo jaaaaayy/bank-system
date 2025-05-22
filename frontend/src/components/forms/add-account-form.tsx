@@ -67,6 +67,7 @@ const AddAccountForm = () => {
             <div className="p-2 rounded-md mt-1 border space-y-1">
               {accountTypes.map((accountType) => (
                 <div
+                key={accountType}
                   className={`${
                     selectedAccountType === accountType
                       ? "bg-muted"

@@ -31,6 +31,44 @@ export type LoginFormState =
     }
   | undefined;
 
+export const registerFormSchema = z
+  .object({
+    email: z.string().email(),
+    first_name: z.string(),
+    middle_name: z.string().optional(),
+    last_name: z.string(),
+    date_of_birth: z.string(),
+    address_line_1: z.string(),
+    address_line_2: z.string().optional(),
+    city: z.string(),
+    province: z.string(),
+    postal_code: z.string(),
+    phone_number: z.string(),
+  })
+  .merge(loginFormSchema);
+
+export type RegisterFormState =
+  | {
+      errors?: {
+        username?: string[];
+        password?: string[];
+        email?: string[];
+        first_name?: string[];
+        middle_name?: string[];
+        last_name?: string[];
+        date_of_birth?: string[];
+        address_line_1?: string[];
+        address_line_2?: string[];
+        city?: string[];
+        province?: string[];
+        postal_code?: string[];
+        phone_number?: string[];
+      };
+      message?: string;
+      success?: boolean;
+    }
+  | undefined;
+
 export const transferFormSchema = z.object({
   account: z.number(),
   amount: z.number().min(300, "Amount should be at least 300."),
