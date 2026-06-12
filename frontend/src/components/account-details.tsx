@@ -1,4 +1,4 @@
-import { getAccount } from "@/actions/account";
+import { getAccount } from "@/lib/data";
 import { Account } from "@/types";
 import { PhilippinePeso } from "lucide-react";
 import { Card, CardContent } from "./ui/card";

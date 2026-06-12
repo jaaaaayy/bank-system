@@ -4,28 +4,6 @@ import { baseUrl } from "@/lib/constants";
 import { transferFormSchema, TransferFormState } from "@/lib/definitions";
 import { cookies } from "next/headers";
 
-export const getTransactions = async () => {
-  const cookieStore = await cookies();
-  const access = cookieStore.get("access")?.value;
-  const accountId = cookieStore.get("account_id")?.value;
-
-  const response = await fetch(`${baseUrl}transactions/${accountId}/get/`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${access}`,
-    },
-  });
-
-  if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.detail || "Failed to fetch transactions!");
-  }
-
-  const data = await response.json();
-  return data.transactions;
-};
-
 export const createTransaction = async (
   state: TransferFormState,
   formData: FormData

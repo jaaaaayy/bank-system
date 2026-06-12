@@ -1,4 +1,4 @@
-import { getAccounts } from "@/actions/account";
+import { getAccounts } from "@/lib/data";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Account } from "@/types";

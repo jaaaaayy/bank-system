@@ -1,4 +1,4 @@
-import { getAccounts } from "@/actions/account";
+import { getAccounts } from "@/lib/data";
 import { Account } from "@/types";
 import TransferForm from "./forms/transfer-form";
 

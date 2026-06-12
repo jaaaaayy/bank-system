@@ -1,4 +1,4 @@
-import { getTransactions } from "@/actions/transaction";
+import { getTransactions } from "@/lib/data";
 import TransactionHistoryTable from "@/app/(banking)/accounts/details/transaction-history-table";
 
 const TransactionHistory = async () => {
